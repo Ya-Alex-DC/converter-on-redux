@@ -24,20 +24,10 @@ export const Converter2 = () => {
 	const convert = (amount, from, to) => {
 		return (amount * getRate(from)) / getRate(to);
 	};
+	
 
 	useEffect(() => {
 		if (!valute.length) return;
-
-
-
-		// const fromRate = getRate(selectedFrom)
-		// const toRate = getRate(selectedTo)
-
-		// const res = (changeValueFrom * fromRate) / toRate
-		// dispatch(getValueTo(res.toFixed(2)))
-
-
-
 		if (selectedFrom && selectedTo && changeValueFrom) {
 			const res = convert(Number(changeValueFrom), selectedFrom, selectedTo);
 			dispatch(getValueTo(Number(res.toFixed(2))));

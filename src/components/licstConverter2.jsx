@@ -4,7 +4,7 @@ import { addTotal, changeValue } from "./store/getValute"
 export const ListConverter2 = () => {
 	const converterList = useSelector(state => state.Valute.selected)
 	const value = useSelector(state => state.Valute.value)
-	const total = useSelector(state => state.Valute.total) 
+	const total = useSelector(state => state.Valute.total)
 	const dispatch = useDispatch()
 
 	const getTotal = (e) => {
@@ -17,8 +17,8 @@ export const ListConverter2 = () => {
 				maximumFractionDigits: 2
 			}).format(result)
 			: '';
-			dispatch(changeValue(inputValue))
-			dispatch(addTotal(formatted))
+		dispatch(changeValue(inputValue))
+		dispatch(addTotal(formatted))
 	}
 
 	return (

@@ -24,7 +24,7 @@ export const getValute = (state = values, action) => {
 			return { ...state, value: action.payload }
 
 		case GET_TOTAL:
-			return {...state, total: action.payload}
+			return { ...state, total: action.payload }
 		default:
 			return state
 	}
