@@ -1,15 +1,17 @@
-import { useSelector, useDispatch } from "react-redux"
-import { addTotal, changeValue } from "./store/getValute"
+import React from 'react';
+import { RootState } from './store';
+import { addTotal, changeValue } from "./store/action"
+import { useAppDispatch, useAppSelector } from './store/hooks';
 
-export const ListConverter2 = () => {
-	const converterList = useSelector(state => state.Valute.selected)
-	const value = useSelector(state => state.Valute.value)
-	const total = useSelector(state => state.Valute.total)
-	const dispatch = useDispatch()
+export const ListConverter2: React.FC = () => {
+	const converterList = useAppSelector((s: RootState) => s.Valute.selected);
+	const value = useAppSelector(s => s.Valute.value);
+	const total = useAppSelector(s => s.Valute.total);
+	const dispatch = useAppDispatch()
 
-	const getTotal = (e) => {
+	const getTotal = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const inputValue = e.target.value
-		const result = converterList ? inputValue * converterList.Value : null;
+		const result = converterList ? Number(inputValue) * converterList.Value : null;
 		const formatted = result
 			? new Intl.NumberFormat('ru-RU', {
 				style: 'currency',

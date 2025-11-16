@@ -1,13 +1,14 @@
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import React, { useEffect } from "react"
 import { getFetch } from "./store/getFetch"
-import { addSelected } from "./store/getValute"
+import { addSelected } from "./store/action"
 import classNames from 'classnames'
+import { Values } from "./store/types";
+import { useAppDispatch, useAppSelector } from './store/hooks';
 
-export const List2 = () => {
-	const dispatch = useDispatch()
-	const valute = useSelector(state => state.Valute.valute)
-	const selectedForClasses = useSelector(state => state.Valute.selected)
+export const List2: React.FC = () => {
+	const dispatch = useAppDispatch()
+	const valute = useAppSelector(s => s.Valute.valute);
+	const selectedForClasses = useAppSelector(s => s.Valute.selected);
 
 	useEffect(() => {
 		dispatch(getFetch())
@@ -18,7 +19,7 @@ export const List2 = () => {
 			<h1>Относительно рубля</h1>
 			<ul className="list_item">
 				{
-					valute.map(e => (
+					valute.map((e: Values) => (
 						<li className={classNames("list_elem", {
 							selected: selectedForClasses?.CharCode === e.CharCode
 						})}

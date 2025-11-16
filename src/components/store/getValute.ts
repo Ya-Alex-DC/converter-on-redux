@@ -1,8 +1,10 @@
+import { ValuteState, ValuteAction } from "./types"
 
-const values = {
+
+const initialState: ValuteState = {
 	valute: [],
 	selected: null,
-	value: 0,
+	value: '',
 	total: ''
 }
 
@@ -11,7 +13,7 @@ const SELECTED_VALUTE = 'SELECTED_VALUTE'
 const ON_CHANGE_VALUE = 'ON_CHANGE_VALUE'
 const GET_TOTAL = 'GET_TOTAL'
 
-export const getValute = (state = values, action) => {
+export const getValute = (state = initialState, action: ValuteAction): ValuteState => {
 	switch (action.type) {
 
 		case ADD_VALUTE:
@@ -29,16 +31,3 @@ export const getValute = (state = values, action) => {
 			return state
 	}
 }
-
-export const addValute = (payload) => ({ type: ADD_VALUTE, payload })
-export const addSelected = (payload) => ({ type: SELECTED_VALUTE, payload })
-export const changeValue = (payload) => ({ type: ON_CHANGE_VALUE, payload })
-export const addTotal = (payload) => ({ type: GET_TOTAL, payload })
-
-
-
-
-
-
-
-
